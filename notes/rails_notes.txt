@@ -1,0 +1,108 @@
+RAILS 
+-----
+
+1.
+NOTES
+-----
+chaque page doit être référencée dans pages_controller.rb
+
+la page application.html.erb contient le squelette html des pages
+
+les pages (les vues) sont dans castor/app/views/pages
+
+une migration permet de changer la structure de votre base de données : ajouter, supprimer ou modifier une table ou une colonne. C’est comme remplir la première ligne d’un tableur avec le nom des colonnes. Si ces noms changent, il faut faire une migration pour changer sa structure.
+
+2. TOOLS
+-- -----
+
+#console
+rails console
+
+#objects reation from models
+Book.create title: "Le Petit Prince"
+Book.create title: "Le Meilleur des mondes"
+Book.create title: "1984"
+
+#create  = Obj.new; Obj.save
+
+3. PAGE CREATION
+
+3.1 simple page using get
+3.1.1 controller creation
+rails generate controller <CONTROLLER_NAME> <PAGE_NAME>
+#exemple:
+rails generate controller books index
+
+3.1.2 model definition
+#add logic here, load variables from db
+#example:
+class BooksController < ApplicationController
+  def index
+    @les_livres = Book.all
+  end
+end
+
+3.1.3 view definition
+
+<% @les_livres.each do |un_livre| %>
+  <p><%= un_livre.title %></p>
+<% end %>
+
+3.1.4 routing
+get 'books' => 'books#index'
+
+3.2 differencation entre get et post
+
+3.2.1 controler creation/updating
+
+3.2.4 routing
+get 'books' => 'books#index'
+post 'books' => 'books#create'
+
+
+
+
+
+4. INSTALL
+-- -------
+
+
+# from a git clone / zip archive
+bundle install
+rake db:migrate
+
+
+
+
+
+5. DEPLOY USING HEROKU
+-- ------ ----- ------
+heroku login
+rake assets:precompile
+git push heroku master
+
+
+9998. MIGRATIONS
+-- ----------
+1. in website root:
+rails generate migration <MIGRATION_NAME>
+# generates in db/migrate a _*.rb file
+
+2. in rb file, add sql instructions in rb
+class <MIGRATION_NAME> < ActiveRecord::Migration
+  def change
+    create_table :books
+    add_column :books, :title, :string
+  end
+end
+
+3. in bash from root dir, run rb file using
+rake db:migrate
+
+
+
+
+9999.LEXIQUE
+------------
+
+helper : fonction produisant du HTML à notre place

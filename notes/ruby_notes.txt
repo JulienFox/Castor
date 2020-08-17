@@ -1,0 +1,25 @@
+ruby notes
+1. return has to be mentionned, otherwise leads to confusion
+
+2. object type can be found calling object.class
+
+
+3. installing gems
+
+
+4. gem import
+require 'rubygems'
+require 'rvideo'
+
+file = RVideo::Inspector.new(:file => "/home/user/r/input.mp4")
+
+
+5. try => begin
+except => rescue
+finally => ensure
+
+6. ternary
+    apple_stock > 1 ? :eat_apple : :buy_apple
+
+7. AttributeMethods
+https://guides.rubyonrails.org/active_model_basics.html
