@@ -1,0 +1,16 @@
+ALTER ROLE meb SET client_encoding TO 'utf8';
+ALTER ROLE meb SET default_transaction_isolation TO 'read committed';
+ALTER ROLE meb SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE RebloDB TO meb;
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'RebloDB',
+        'USER': 'meb',
+        'PASSWORD': 'reblo:)',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}

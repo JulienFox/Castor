@@ -85,8 +85,9 @@ git push heroku master
 9998. MIGRATIONS
 -- ----------
 1. in website root:
+
 rails generate migration <MIGRATION_NAME>
-# generates in db/migrate a _*.rb file
+# generates in db/migrate a _*<MIGRATION_NAME>.rb file
 
 2. in rb file, add sql instructions in rb
 class <MIGRATION_NAME> < ActiveRecord::Migration
@@ -96,7 +97,13 @@ class <MIGRATION_NAME> < ActiveRecord::Migration
   end
 end
 
-3. in bash from root dir, run rb file using
+3. (optionnal) add addociated model in relation with migration, here category creation:
+# app/models/category.rb
+class Category < ActiveRecord::Base
+end
+
+
+4. in bash from root dir, run rb file using
 rake db:migrate
 
 
@@ -106,3 +113,4 @@ rake db:migrate
 ------------
 
 helper : fonction produisant du HTML à notre place
+scope : filtre permettant de produire unee méthode à partir d'une commande de recherche dans une liste de résultats
