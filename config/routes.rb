@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  get 'books/index'
-  get 'castor' => 'pages#home'
-  get 'conf' => 'pages#conf'
+  root 'books#index'
+
   get 'books' => 'books#index'
-  post 'books' => 'books#create'
   get 'books/:id' => 'books#show'
   patch 'books/:id' => 'books#update'
-  # get ROUTE => CONTROLLER#CONFIGURATION
   delete 'books/:id' => 'books#destroy'
-  root 'pages#home'
+  post 'books' => 'books#create'
+
+  get 'conf' => 'pages#conf'
+
 
   # For details on the DSL available within
   # this file, see http://guides.rubyonrails.org/routing.html

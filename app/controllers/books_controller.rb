@@ -1,14 +1,16 @@
 class BooksController < ApplicationController
   def index
-    #@books = Book.all
     @books = Book.page(params[:page])
     @categories = Category.all
-    #ra@books = Book.page(1)
+  end
 
+  def create
+    Book.create title: params[:title], category_id: params[:category_id]
+    redirect_to "/books"
   end
 
   def show
-    @books = Book.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def update
@@ -24,14 +26,4 @@ class BooksController < ApplicationController
     Book.find(params[:id]).destroy
     redirect_to "/books"
   end
-  # app/controllers/books_controller.rb
-  def create
-    Book.create title: params[:title], category_id: params[:category_id]
-    redirect_to "/books"
-  end
-
-
-
 end
-
-

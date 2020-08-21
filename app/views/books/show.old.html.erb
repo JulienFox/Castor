@@ -1,6 +1,7 @@
 # app/views/books/show.html.erb
 <h1><%= @book.title %></h1>
 
+# app/views/books/show.html.erb
 <%= form_tag "/books/#{@book.id}", method: "patch" do %>
   <input type="text" name="title" value="<%= @book.title %>" />
   <p><%= @book.errors[:title].first %></p>
@@ -10,5 +11,4 @@
 <%= form_tag "/books/#{@book.id}", method: "delete" do %>
   <input type="submit" value="Supprimer le livre" />
 <% end %>
-
 <p><a href="/books">Retourner à l’index</a></p>
