@@ -13,5 +13,6 @@ class Book < ActiveRecord::Base
   scope :french, -> { where(category_id: 1) }
   scope :Monde, -> { where(category_id: 2) }
   scope :english, -> { where(category_id: 3) }
+  scope :Unknown, -> { where(category_id: 4) }
 
 end

@@ -82,6 +82,26 @@ rake assets:precompile
 git push heroku master
 
 
+6. GEMS
+-- ----
+devise pour s’inscrire et se connecter ;
+pundit pour gérer les différents droits d’accès.
+
+
+7. CONVENTIONS
+-- -----------
+
+7.1 using partials in views
+
+7.1.1 ressource creation
+# app/views/books/_exemple.html.erb
+<p>Ceci est un exemple</p>
+7.1.2 call & use
+# app/views/books/index.html.erb
+<%= render "books/exemple" %>
+<h1>Liste des livres</h1>
+
+
 9998. MIGRATIONS
 -- ----------
 1. in website root:
@@ -113,4 +133,18 @@ rake db:migrate
 ------------
 
 helper : fonction produisant du HTML à notre place
+définit en # app/helpers/...
+exemple via modules:
+
+module BooksHelper
+  def exemple
+    "Ceci est un test"
+  end
+end
+s'utilisant comme: <%= exemple %>
 scope : filtre permettant de produire unee méthode à partir d'une commande de recherche dans une liste de résultats
+
+partial :
+portion de code dans une vue qui peut être appellée dans une autre
+
+scope

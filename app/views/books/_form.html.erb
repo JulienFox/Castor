@@ -1,0 +1,10 @@
+# app/views/books/_form.html.erb
+<%= form_for @book do %>
+  <input type="text" name="title" value="<%= @book.title %>" />
+  <p><%= @book.errors[:title].first %></p>
+  <% if @book.persisted? %>
+    <input type="submit" value="Modifier le livre" />
+  <% else %>
+    <input type="submit" value="Ajouter le livre" />
+  <% end %>
+<% end %>
